@@ -1,0 +1,11 @@
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/UserTypeHandle.cpp:34 ] Called with: alex_t
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/UserTypeHandle.cpp:67 ] c
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/UserTypeHandle.cpp:17 ] aais with orig: c
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/ObjectHandle.cpp:35 ] ObjectHandle called with object: test_struct
+Mon Oct 29 15:15:52 2018: [ Lexer/lexer.cpp:34 ] pushed to known types
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/UserTypeHandle.cpp:34 ] Called with: test_struct
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/UserTypeHandle.cpp:67 ] member_function
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/UserTypeHandle.cpp:17 ] aais with orig: member_function
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/UserTypeHandle.cpp:34 ] Called with: alex_t
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/UserTypeHandle.cpp:67 ] ;
+Mon Oct 29 15:15:52 2018: [ Lexer/LexFuncs/UserTypeHandle.cpp:17 ] aais with orig: ;

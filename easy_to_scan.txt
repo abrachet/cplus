@@ -1,0 +1,26 @@
+unsigned long long a_name = 8;
+
+
+typedef int alex_t;
+
+
+struct test_struct {
+    int a;
+    alex_t b;
+    char c;
+
+    member_function();
+
+};
+
+void function(int a)
+{
+    alex_t* b = malloc(4);
+    *b = a;
+}
+
+int main()
+{
+    function(1);
+    return 0;
+}

@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+unsigned long long a_name = 8;
+
+typedef int alex_t;
+
+struct test_struct {
+    int a;
+    alex_t b;
+    char c;
+
+    void member_function();
+
+};
+
+static test_struct {
+    int static_life_time;
+
+    test_struct* new();
+}
+
+T* template_alloc<T>(int num)
+{
+    return (T*) malloc( sizeof(T) * num );
+}
+
+int main()
+{
+    test_struct* ptr = alloc<test_struct>(5);
+    test_struct* new = test_struct::new();
+    
+    ptr.member_function();
+    
+    return 0;
+}

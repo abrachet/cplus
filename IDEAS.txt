@@ -1,0 +1,38 @@
+better function pointer syntax:
+funcdef void(int, int) my_fptr;
+expands to typedef void(* my_fptr)(int, int)
+
+
+templates:
+void func<T>() { ... }
+
+classes:
+struct Class {
+    int datamember;
+
+    int get_dm() { return datamember; }
+};
+
+struct temClass<T> {
+    T data;
+
+}
+
+
+
+traits:
+
+trait Copyable {
+
+};
+
+trait Printable {
+    char* toString();
+}
+
+trait RegisterSize {
+    // no actually required functions
+    // but we can comment what this means
+    // semantically we can define this trait as 
+    // for objects <= 64 bits
+}

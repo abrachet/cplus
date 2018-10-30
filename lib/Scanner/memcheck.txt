@@ -1,0 +1,1089 @@
+==74108== Memcheck, a memory error detector
+==74108== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==74108== Using Valgrind-3.14.0.GIT-097b207601-20180910 and LibVEX; rerun with -h for copyright info
+==74108== Command: ./test
+==74108== Parent PID: 69162
+==74108== 
+--74108-- 
+--74108-- Valgrind options:
+--74108--    --tool=memcheck
+--74108--    --verbose
+--74108--    --log-file=memcheck.txt
+--74108--    --leak-check=full
+--74108-- Output from sysctl({CTL_KERN,KERN_VERSION}):
+--74108--   Darwin Kernel Version 18.0.0: Wed Aug 22 20:13:40 PDT 2018; root:xnu-4903.201.2~1/RELEASE_X86_64
+--74108-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--74108-- Page sizes: currently 4096, max supported 4096
+--74108-- Valgrind library directory: /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind
+--74108-- ./test (rx at 0x100000000, rw at 0x100019000)
+--74108--    reading syms   from primary file (69 828)
+--74108--    dSYM= ./test.dSYM/Contents/Resources/DWARF/test
+--74108--    reading dwarf3 from dsyms file
+--74108-- /usr/lib/dyld (rx at 0x10002a000, rw at 0x1000a9000)
+--74108--    reading syms   from primary file (5 2307)
+--74108-- Scheduler: using generic scheduler lock implementation.
+--74108-- Reading suppressions file: /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/default.supp
+==74108== embedded gdbserver: reading from /var/folders/xc/bfq8kbdj5lj7zxgt_hbwr2bc0000gn/T//vgdb-pipe-from-vgdb-to-74108-by-alexbrachet-on-???
+==74108== embedded gdbserver: writing to   /var/folders/xc/bfq8kbdj5lj7zxgt_hbwr2bc0000gn/T//vgdb-pipe-to-vgdb-from-74108-by-alexbrachet-on-???
+==74108== embedded gdbserver: shared mem   /var/folders/xc/bfq8kbdj5lj7zxgt_hbwr2bc0000gn/T//vgdb-pipe-shared-mem-vgdb-74108-by-alexbrachet-on-???
+==74108== 
+==74108== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==74108== don't want to do, unless you know exactly what you're doing,
+==74108== or are doing some strange experiment):
+==74108==   /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/../../bin/vgdb --pid=74108 ...command...
+==74108== 
+==74108== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==74108==   /path/to/gdb ./test
+==74108== and then give GDB the following command
+==74108==   target remote | /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/../../bin/vgdb --pid=74108
+==74108== --pid is optional if only one valgrind process is running
+==74108== 
+--74108-- REDIR: 0x10006d000 (dyld:strcmp) redirected to 0x258057b55 (???)
+--74108-- REDIR: 0x100067460 (dyld:arc4random) redirected to 0x258057bf3 (???)
+--74108-- REDIR: 0x10006c3e0 (dyld:strlen) redirected to 0x258057b24 (???)
+--74108-- REDIR: 0x10006d300 (dyld:strcpy) redirected to 0x258057b71 (???)
+--74108-- REDIR: 0x10006a5e2 (dyld:strcat) redirected to 0x258057b35 (???)
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1000303B0: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1000324E9: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
+==74108==    by 0x1000303B9: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+--74108-- REDIR: 0x10006c1d9 (dyld:strlcat) redirected to 0x258057b8e (???)
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10002CBD2: dyld::processDyldEnvironmentVariable(char const*, char const*, char const*) (in /usr/lib/dyld)
+==74108==    by 0x1000325F6: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
+==74108==    by 0x1000303B9: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1000303C1: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x100034585: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x100033EF1: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x10002DAEE: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x10002D642: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
+==74108==    by 0x100031430: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x100034585: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x100033EF1: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x10002DAEE: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x10002D67D: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
+==74108==    by 0x100031430: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+--74108-- UNKNOWN fcntl 98!
+--74108-- /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_core-amd64-darwin.so (rx at 0x10010b000, rw at 0x100111000)
+--74108--    reading syms   from primary file (3 91)
+--74108--    dSYM= /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
+--74108-- UNKNOWN fcntl 98! (repeated 2 times)
+--74108-- /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so (rx at 0x100115000, rw at 0x10011e000)
+--74108--    reading syms   from primary file (72 99)
+--74108--    dSYM= /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
+--74108-- /usr/lib/libc++.1.dylib (rx at 0x100124000, rw at 0x10017c000)
+--74108--    reading syms   from primary file (2023 1671)
+--74108-- UNKNOWN fcntl 98! (repeated 4 times)
+--74108-- /usr/lib/libSystem.B.dylib (rx at 0x1001dc000, rw at 0x1001de000)
+--74108--    reading syms   from primary file (29 7)
+--74108-- /usr/lib/libc++abi.dylib (rx at 0x1001e3000, rw at 0x1001f9000)
+--74108--    reading syms   from primary file (369 604)
+--74108-- /usr/lib/system/libcache.dylib (rx at 0x10020f000, rw at 0x100214000)
+--74108--    reading syms   from primary file (32 28)
+--74108-- /usr/lib/system/libcommonCrypto.dylib (rx at 0x100219000, rw at 0x100224000)
+--74108--    reading syms   from primary file (222 166)
+--74108-- UNKNOWN fcntl 98! (repeated 8 times)
+--74108-- /usr/lib/system/libcompiler_rt.dylib (rx at 0x100231000, rw at 0x100239000)
+--74108--    reading syms   from primary file (510 8)
+--74108-- /usr/lib/system/libcopyfile.dylib (rx at 0x100246000, rw at 0x100250000)
+--74108--    reading syms   from primary file (11 37)
+--74108-- /usr/lib/system/libcorecrypto.dylib (rx at 0x100256000, rw at 0x1002db000)
+--74108--    reading syms   from primary file (516 685)
+--74108-- /usr/lib/system/libdispatch.dylib (rx at 0x1002f7000, rw at 0x100332000)
+--74108--    reading syms   from primary file (300 940)
+--74108-- /usr/lib/system/libdyld.dylib (rx at 0x100362000, rw at 0x100392000)
+--74108--    reading syms   from primary file (107 1394)
+--74108-- /usr/lib/system/libkeymgr.dylib (rx at 0x1003b4000, rw at 0x1003b5000)
+--74108--    reading syms   from primary file (11 2)
+--74108-- /usr/lib/system/libmacho.dylib (rx at 0x1003c0000, rw at 0x1003c6000)
+--74108--    reading syms   from primary file (105 2)
+--74108-- UNKNOWN fcntl 98! (repeated 16 times)
+--74108-- /usr/lib/system/libquarantine.dylib (rx at 0x1003cc000, rw at 0x1003cf000)
+--74108--    reading syms   from primary file (71 38)
+--74108-- /usr/lib/system/libremovefile.dylib (rx at 0x1003d5000, rw at 0x1003d7000)
+--74108--    reading syms   from primary file (12 6)
+--74108-- /usr/lib/system/libsystem_asl.dylib (rx at 0x1003dc000, rw at 0x1003f4000)
+--74108--    reading syms   from primary file (220 229)
+--74108-- /usr/lib/system/libsystem_blocks.dylib (rx at 0x100401000, rw at 0x100402000)
+--74108--    reading syms   from primary file (21 7)
+--74108-- /usr/lib/system/libsystem_c.dylib (rx at 0x100406000, rw at 0x10048f000)
+--74108--    reading syms   from primary file (1342 803)
+--74108-- /usr/lib/system/libsystem_configuration.dylib (rx at 0x1004b7000, rw at 0x1004bb000)
+--74108--    reading syms   from primary file (38 66)
+--74108-- /usr/lib/system/libsystem_coreservices.dylib (rx at 0x1004c1000, rw at 0x1004c5000)
+--74108--    reading syms   from primary file (14 43)
+--74108-- /usr/lib/system/libsystem_darwin.dylib (rx at 0x1004ca000, rw at 0x1004d1000)
+--74108--    reading syms   from primary file (39 320)
+--74108-- /usr/lib/system/libsystem_dnssd.dylib (rx at 0x1004db000, rw at 0x1004e2000)
+--74108--    reading syms   from primary file (39 34)
+--74108-- /usr/lib/system/libsystem_info.dylib (rx at 0x1004e7000, rw at 0x100534000)
+--74108--    reading syms   from primary file (426 733)
+--74108-- /usr/lib/system/libsystem_m.dylib (rx at 0x10054a000, rw at 0x100596000)
+--74108--    reading syms   from primary file (811 1)
+--74108-- /usr/lib/system/libsystem_malloc.dylib (rx at 0x1005a4000, rw at 0x1005c9000)
+--74108--    reading syms   from primary file (156 383)
+--74108-- /usr/lib/system/libsystem_networkextension.dylib (rx at 0x1005d7000, rw at 0x1005e3000)
+--74108--    reading syms   from primary file (99 244)
+--74108-- /usr/lib/system/libsystem_notify.dylib (rx at 0x1005ef000, rw at 0x1005f7000)
+--74108--    reading syms   from primary file (23 1)
+--74108-- /usr/lib/system/libsystem_sandbox.dylib (rx at 0x1005fd000, rw at 0x100601000)
+--74108--    reading syms   from primary file (100 13)
+--74108-- /usr/lib/system/libsystem_secinit.dylib (rx at 0x100607000, rw at 0x10060a000)
+--74108--    reading syms   from primary file (4 8)
+--74108-- UNKNOWN fcntl 98! (repeated 32 times)
+--74108-- /usr/lib/system/libsystem_kernel.dylib (rx at 0x10060f000, rw at 0x100637000)
+--74108--    reading syms   from primary file (1306 120)
+--74108-- /usr/lib/system/libsystem_platform.dylib (rx at 0x100651000, rw at 0x10065b000)
+--74108--    reading syms   from primary file (166 105)
+--74108-- /usr/lib/system/libsystem_pthread.dylib (rx at 0x100663000, rw at 0x10066e000)
+--74108--    reading syms   from primary file (186 98)
+--74108-- /usr/lib/system/libsystem_symptoms.dylib (rx at 0x100678000, rw at 0x100680000)
+--74108--    reading syms   from primary file (10 93)
+--74108-- /usr/lib/system/libsystem_trace.dylib (rx at 0x100686000, rw at 0x10069c000)
+--74108--    reading syms   from primary file (126 250)
+--74108-- /usr/lib/system/libunwind.dylib (rx at 0x1006ab000, rw at 0x1006b1000)
+--74108--    reading syms   from primary file (102 52)
+--74108-- /usr/lib/system/libxpc.dylib (rx at 0x1006b8000, rw at 0x1006e9000)
+--74108--    reading syms   from primary file (589 1001)
+--74108-- /usr/lib/libobjc.A.dylib (rx at 0x10070d000, rw at 0x100e94000)
+--74108--    reading syms   from primary file (356 911)
+--74108-- REDIR: 0x100652760 (libsystem_platform.dylib:_platform_memcmp) redirected to 0x100118872 (_platform_memcmp)
+--74108-- REDIR: 0x100652fe0 (libsystem_platform.dylib:_platform_strncmp) redirected to 0x10011803c (_platform_strncmp)
+--74108-- REDIR: 0x100653380 (libsystem_platform.dylib:_platform_strcmp) redirected to 0x1001180bd (_platform_strcmp)
+--74108-- REDIR: 0x1005a7c9c (libsystem_malloc.dylib:calloc) redirected to 0x100116b77 (calloc)
+--74108-- REDIR: 0x1005a7e24 (libsystem_malloc.dylib:malloc_default_zone) redirected to 0x1001178bd (malloc_default_zone)
+--74108-- REDIR: 0x1005a57a0 (libsystem_malloc.dylib:malloc_zone_malloc) redirected to 0x1001167c3 (malloc_zone_malloc)
+--74108-- REDIR: 0x1005a7cd7 (libsystem_malloc.dylib:malloc_zone_calloc) redirected to 0x100116d65 (malloc_zone_calloc)
+--74108-- REDIR: 0x1005a576b (libsystem_malloc.dylib:malloc) redirected to 0x100116550 (malloc)
+--74108-- REDIR: 0x1005a7e2c (libsystem_malloc.dylib:malloc_zone_from_ptr) redirected to 0x1001178fe (malloc_zone_from_ptr)
+--74108-- REDIR: 0x1005a812f (libsystem_malloc.dylib:free) redirected to 0x100116939 (free)
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025812B: bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259351: df_bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259131: df (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257A7F: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025812B: bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x1002593E1: df_bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259131: df (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257A7F: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025812B: bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259190: df (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257A7F: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025923F: df (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257A7F: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x100259523: drbg_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257B3E: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025974B: generate (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A4E3: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1002FA5C3: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==74108==    by 0x1003063A6: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x1002594A6: drbg_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259796: generate (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A4E3: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1002FA5C3: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1002594C3: drbg_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259796: generate (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A4E3: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1002FA5C3: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==74108==    by 0x1003063A6: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x100259523: drbg_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259796: generate (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A4E3: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1002FA5C3: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==74108==    by 0x1003063A6: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==74108== 
+--74108-- REDIR: 0x1005ab133 (libsystem_malloc.dylib:realloc) redirected to 0x100116ef9 (realloc)
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10071824C: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071824E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x100718260: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071827E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071828C: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10071824C: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96C5: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071824E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96C5: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x100718260: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96C5: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071827E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96C5: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1006BA641: xpc_uint64_create (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006BA5CF: _xpc_collect_images (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006B9A25: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1006BA33B: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006BA727: _xpc_dyld_image_callback (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x10002E8B8: dyld::registerLoadCallback(void (*)(mach_header const*, char const*, bool)) (in /usr/lib/dyld)
+==74108==    by 0x1006BA5DF: _xpc_collect_images (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006B9A25: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108== 
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1006BA404: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006BA727: _xpc_dyld_image_callback (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x10002E8B8: dyld::registerLoadCallback(void (*)(mach_header const*, char const*, bool)) (in /usr/lib/dyld)
+==74108==    by 0x1006BA5DF: _xpc_collect_images (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006B9A25: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108== 
+--74108-- REDIR: 0x1006531c0 (libsystem_platform.dylib:_platform_strchr$VARIANT$Haswell) redirected to 0x100117b6e (_platform_strchr$VARIANT$Haswell)
+==74108== Invalid read of size 1
+==74108==    at 0x10012607A: std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::~basic_string() (in /usr/lib/libc++.1.dylib)
+==74108==    by 0x100007078: Tokens::Token::~Token() (tokens.h:78)
+==74108==    by 0x1000046B4: Tokens::Token::~Token() (tokens.h:78)
+==74108==    by 0x100004631: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:166)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Address 0x10105b458 is 8 bytes inside a block of size 40 free'd
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x100003C18: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:135)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Block was alloc'd at
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x100002CE6: Scanner::is_delim_char(char, unsigned long long) (next_try.cpp:99)
+==74108==    by 0x100003683: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:125)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== Invalid free() / delete / delete[] / realloc()
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x10000463D: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:166)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Address 0x10105b450 is 0 bytes inside a block of size 40 free'd
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x100003C18: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:135)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Block was alloc'd at
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x100002CE6: Scanner::is_delim_char(char, unsigned long long) (next_try.cpp:99)
+==74108==    by 0x100003683: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:125)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== Invalid read of size 1
+==74108==    at 0x10012607A: std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::~basic_string() (in /usr/lib/libc++.1.dylib)
+==74108==    by 0x100007078: Tokens::Token::~Token() (tokens.h:78)
+==74108==    by 0x1000046B4: Tokens::Token::~Token() (tokens.h:78)
+==74108==    by 0x1000045EE: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:164)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Address 0x10105ea38 is 8 bytes inside a block of size 40 free'd
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x10000418E: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:140)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Block was alloc'd at
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x10000309D: Scanner::is_opperator(char, unsigned long long) (next_try.cpp:108)
+==74108==    by 0x1000036A6: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:126)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== Invalid free() / delete / delete[] / realloc()
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1000045FA: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:164)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Address 0x10105ea30 is 0 bytes inside a block of size 40 free'd
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x10000418E: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:140)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Block was alloc'd at
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x10000309D: Scanner::is_opperator(char, unsigned long long) (next_try.cpp:108)
+==74108==    by 0x1000036A6: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:126)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+--74108-- REDIR: 0x1006536e0 (libsystem_platform.dylib:_platform_memchr$VARIANT$Haswell) redirected to 0x100118146 (_platform_memchr$VARIANT$Haswell)
+==74108== 
+==74108== HEAP SUMMARY:
+==74108==     in use at exit: 24,839 bytes in 204 blocks
+==74108==   total heap usage: 488 allocs, 302 frees, 62,235 bytes allocated
+==74108== 
+==74108== Searching for pointers to 204 not-freed blocks
+==74108== Checked 10,739,168 bytes
+==74108== 
+==74108== 48 bytes in 2 blocks are possibly lost in loss record 19 of 46
+==74108==    at 0x100116C32: calloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x10070F16A: preopt_init (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1002FA5C3: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==74108==    by 0x1003063A6: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==74108==    by 0x1001DD9C4: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108== 
+==74108== 160 bytes in 4 blocks are definitely lost in loss record 28 of 46
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x10000419F: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:144)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== 320 bytes in 8 blocks are definitely lost in loss record 35 of 46
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x1000031B8: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:119)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== 960 bytes in 24 blocks are definitely lost in loss record 40 of 46
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x1000044C4: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:154)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== LEAK SUMMARY:
+==74108==    definitely lost: 1,440 bytes in 36 blocks
+==74108==    indirectly lost: 0 bytes in 0 blocks
+==74108==      possibly lost: 48 bytes in 2 blocks
+==74108==    still reachable: 4,296 bytes in 7 blocks
+==74108==         suppressed: 19,055 bytes in 159 blocks
+==74108== Reachable blocks (those to which a pointer was found) are not shown.
+==74108== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==74108== 
+==74108== Use --track-origins=yes to see where uninitialised values come from
+==74108== ERROR SUMMARY: 465 errors from 35 contexts (suppressed: 5 from 5)
+==74108== 
+==74108== 1 errors in context 1 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1006BA641: xpc_uint64_create (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006BA5CF: _xpc_collect_images (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006B9A25: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 2 of 35:
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071827E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96C5: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 3 of 35:
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x100718260: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96C5: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 4 of 35:
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071824E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96C5: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 5 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10071824C: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96C5: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 6 of 35:
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071828C: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 7 of 35:
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071827E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 8 of 35:
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x100718260: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 9 of 35:
+==74108== Use of uninitialised value of size 8
+==74108==    at 0x10071824E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 10 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10071824C: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1006B96AC: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108==    by 0x10002C72D: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+==74108==    by 0x10003178E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 11 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x100259523: drbg_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259796: generate (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A4E3: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1002FA5C3: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==74108==    by 0x1003063A6: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==74108== 
+==74108== 
+==74108== 1 errors in context 12 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1002594C3: drbg_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259796: generate (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A4E3: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1002FA5C3: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==74108==    by 0x1003063A6: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==74108== 
+==74108== 
+==74108== 1 errors in context 13 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x1002594A6: drbg_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259796: generate (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A4E3: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1002FA5C3: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==74108== 
+==74108== 
+==74108== 1 errors in context 14 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025974B: generate (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A4E3: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x1002FA5C3: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==74108==    by 0x1003063A6: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==74108== 
+==74108== 
+==74108== 1 errors in context 15 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x100259523: drbg_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257B3E: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108==    by 0x10070EC33: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==74108== 
+==74108== 
+==74108== 1 errors in context 16 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1000303C1: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 17 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10002CBD2: dyld::processDyldEnvironmentVariable(char const*, char const*, char const*) (in /usr/lib/dyld)
+==74108==    by 0x1000325F6: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
+==74108==    by 0x1000303B9: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 18 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1000324E9: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
+==74108==    by 0x1000303B9: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 1 errors in context 19 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1000303B0: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 2 errors in context 20 of 35:
+==74108== Invalid free() / delete / delete[] / realloc()
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1000045FA: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:164)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Address 0x10105ea30 is 0 bytes inside a block of size 40 free'd
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x10000418E: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:140)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Block was alloc'd at
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x10000309D: Scanner::is_opperator(char, unsigned long long) (next_try.cpp:108)
+==74108==    by 0x1000036A6: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:126)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== 
+==74108== 2 errors in context 21 of 35:
+==74108== Invalid read of size 1
+==74108==    at 0x10012607A: std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::~basic_string() (in /usr/lib/libc++.1.dylib)
+==74108==    by 0x100007078: Tokens::Token::~Token() (tokens.h:78)
+==74108==    by 0x1000046B4: Tokens::Token::~Token() (tokens.h:78)
+==74108==    by 0x1000045EE: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:164)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Address 0x10105ea38 is 8 bytes inside a block of size 40 free'd
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x10000418E: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:140)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Block was alloc'd at
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x10000309D: Scanner::is_opperator(char, unsigned long long) (next_try.cpp:108)
+==74108==    by 0x1000036A6: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:126)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== 
+==74108== 2 errors in context 22 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1006BA404: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006BA727: _xpc_dyld_image_callback (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x10002E8B8: dyld::registerLoadCallback(void (*)(mach_header const*, char const*, bool)) (in /usr/lib/dyld)
+==74108==    by 0x1006BA5DF: _xpc_collect_images (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006B9A25: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 2 errors in context 23 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x1006BA33B: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006BA727: _xpc_dyld_image_callback (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x10002E8B8: dyld::registerLoadCallback(void (*)(mach_header const*, char const*, bool)) (in /usr/lib/dyld)
+==74108==    by 0x1006BA5DF: _xpc_collect_images (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1006B9A25: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+==74108==    by 0x1001DD9C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==74108==    by 0x100042CC7: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x100042EC5: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==74108==    by 0x10003E0D9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003E06C: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D253: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==74108==    by 0x10003D2E7: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 2 errors in context 24 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025923F: df (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257A7F: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108==    by 0x100364646: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==74108== 
+==74108== 
+==74108== 3 errors in context 25 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025812B: bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259190: df (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257A7F: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108==    by 0x10002F699: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 3 errors in context 26 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025812B: bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x1002593E1: df_bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259131: df (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257A7F: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 3 errors in context 27 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x10025820B: ccaes_vng_ctr_crypt (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10025812B: bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259351: df_bcc_update (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100259131: df (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257A7F: nistctr_init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x100257932: init (in /usr/lib/system/libcorecrypto.dylib)
+==74108==    by 0x10042A35A: arc4_init (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10042A478: arc4random_buf (in /usr/lib/system/libsystem_c.dylib)
+==74108==    by 0x10071044D: _read_images (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10070F472: appendHeader (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x100723278: _class_remap (in /usr/lib/libobjc.A.dylib)
+==74108==    by 0x10002F570: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 16 errors in context 28 of 35:
+==74108== Invalid free() / delete / delete[] / realloc()
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x10000463D: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:166)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Address 0x10105b450 is 0 bytes inside a block of size 40 free'd
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x100003C18: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:135)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Block was alloc'd at
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x100002CE6: Scanner::is_delim_char(char, unsigned long long) (next_try.cpp:99)
+==74108==    by 0x100003683: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:125)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== 
+==74108== 16 errors in context 29 of 35:
+==74108== Invalid read of size 1
+==74108==    at 0x10012607A: std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::~basic_string() (in /usr/lib/libc++.1.dylib)
+==74108==    by 0x100007078: Tokens::Token::~Token() (tokens.h:78)
+==74108==    by 0x1000046B4: Tokens::Token::~Token() (tokens.h:78)
+==74108==    by 0x100004631: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:166)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Address 0x10105b458 is 8 bytes inside a block of size 40 free'd
+==74108==    at 0x1001169AB: free (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x100003C18: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:135)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108==  Block was alloc'd at
+==74108==    at 0x1001165C6: malloc (in /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==74108==    by 0x1001E3F47: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==74108==    by 0x100002CE6: Scanner::is_delim_char(char, unsigned long long) (next_try.cpp:99)
+==74108==    by 0x100003683: Scanner::scan_line(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned long long) (next_try.cpp:125)
+==74108==    by 0x1000050F0: Scanner::scan_lines() (next_try.cpp:190)
+==74108==    by 0x100005A23: main (next_try.cpp:235)
+==74108== 
+==74108== 
+==74108== 39 errors in context 30 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x100034585: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x100033EF1: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x10002DAEE: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x10002D67D: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
+==74108==    by 0x100031430: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+==74108== 
+==74108== 352 errors in context 31 of 35:
+==74108== Conditional jump or move depends on uninitialised value(s)
+==74108==    at 0x100034585: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x100033EF1: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x10002DAEE: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==74108==    by 0x10002D642: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
+==74108==    by 0x100031430: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B4F5: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==74108==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==74108== 
+--74108-- 
+--74108-- used_suppression:      4 OSX1013:1-Leak /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/default.supp:747 suppressed: 8,768 bytes in 4 blocks
+--74108-- used_suppression:     11 OSX1013:17-Leak /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/default.supp:906 suppressed: 7,968 bytes in 115 blocks
+--74108-- used_suppression:     14 OSX1013:10-Leak /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/default.supp:839 suppressed: 2,151 bytes in 34 blocks
+--74108-- used_suppression:      6 OSX1013:18-Leak /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/default.supp:915 suppressed: 168 bytes in 6 blocks
+--74108-- used_suppression:      1 OSX1013:dyld-3 /usr/local/Cellar/valgrind/HEAD-097b207/lib/valgrind/default.supp:1267
+==74108== 
+==74108== ERROR SUMMARY: 465 errors from 35 contexts (suppressed: 5 from 5)

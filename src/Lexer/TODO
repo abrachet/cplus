@@ -1,0 +1,9 @@
+Entire structure of lexer needs to be redone in my opinion
+
+
+outline:
+
+look through tokens, go to their respective functions.
+
+For class/struct keyword:
+    add a new usertype. also, add a 
